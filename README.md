@@ -1,4 +1,15 @@
-> [!WARNING]
+## About this fork
+
+This is a modified version of the original plugin Design Tokens by Lukas Oppermann.
+
+Original project: https://github.com/lukasoppermann/design-tokens.git
+
+This fork fixes the following features:
+- Modify token group name case when exporting
+
+Licensed under the original MIT license (see LICENSE).
+
+> > [!WARNING]
 > **This plugin is only partially supported!**  
 > This means: I don't have capacity to add any features or really improve stuff. Bugfixes may be added if time allows.
 > I am also happy to discuss and merge PRs.

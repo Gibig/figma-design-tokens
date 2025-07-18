@@ -1,3 +1,5 @@
+import {toCamelCase} from '@utils/transformName'
+
 const processAliasModes = (variables) => {
   return variables.reduce((collector, variable) => {
     // only one mode will be passed in if any
@@ -14,7 +16,7 @@ const processAliasModes = (variables) => {
       ...variable,
       values: variable.values.replace(
         `{${aliasCollectionName}.`,
-        `{${aliasCollectionName}.${aliasMode.name.toLowerCase()}.`
+        `{${aliasCollectionName}.${toCamelCase(aliasMode.name)}.`
       )
     })
 

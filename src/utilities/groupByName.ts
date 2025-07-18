@@ -16,7 +16,7 @@ export const groupByKeyAndName = (tokenArray: OriginalFormatTokenInterface[] | S
   // guard
   if (tokenArray.length <= 0) return []
   // nest tokens into object with hierarchy defined by name using /
-  const groupedTokens = tokenArray.map(token => {
+  const groupedTokens = (tokenArray as unknown as any[]).filter((token: any)=> !token.name.replace(/ /g, '').includes('/$') ).map(token => {
     // split token name into array
     // remove leading and following whitespace for every item
     // transform items to lowerCase
