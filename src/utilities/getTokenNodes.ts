@@ -1,12 +1,13 @@
 import { customTokenNode } from '@typings/tokenNodeTypes'
 import extractTokenNodeValues from '@utils/extractTokenNodeValues'
 import isTokenNode from '@utils/isTokenNode'
+import {toCamelCase} from '@utils/transformName'
 
 // the name that token frames have
 const tokenFrameName = '_tokens'
 
 // check if a frame is a _token frame
-const isTokenFrame = (node): boolean => node.type === 'FRAME' && node.name.trim().toLowerCase().substr(0, tokenFrameName.length) === tokenFrameName
+const isTokenFrame = (node): boolean => node.type === 'FRAME' && toCamelCase(node.name.trim()).substr(0, tokenFrameName.length) === tokenFrameName
 
 // return only nodes that are frames
 const getFrameNodes = (nodes): FrameNode[] => [...nodes.map(page => page.findChildren(node => isTokenFrame(node))).reduce((flatten, arr) => [...flatten, ...arr])]

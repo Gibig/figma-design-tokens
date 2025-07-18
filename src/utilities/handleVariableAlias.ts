@@ -3,6 +3,7 @@ import { tokenTypes } from '@config/tokenTypes'
 
 import { getVariableTypeByValue } from '@utils/getVariableTypeByValue'
 import { changeNotation } from '@utils/changeNotation'
+import {toCamelCase} from '@utils/transformName'
 
 async function handleVariableAlias (
   variable: Variable & { aliasSameMode?: boolean },
@@ -20,7 +21,7 @@ async function handleVariableAlias (
     category: getVariableTypeByValue(
       Object.values(resolvedAlias.valuesByMode)[0]
     ),
-    values: `{${collection.name.toLowerCase()}.${changeNotation(
+    values: `{${toCamelCase(collection.name)}.${changeNotation(
       resolvedAlias.name,
       '/',
       '.'
@@ -28,7 +29,7 @@ async function handleVariableAlias (
 
     // this is being stored so we can properly update the design tokens later to account for all
     // modes when using aliases
-    aliasCollectionName: collection.name.toLowerCase(),
+    aliasCollectionName: toCamelCase(collection.name),
     aliasMode: mode,
     aliasSameMode: variable.aliasSameMode || aliasSameMode
   }
